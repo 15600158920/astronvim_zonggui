@@ -13,7 +13,6 @@ return {
   --
   --
 
-  { import = "astrocommunity.markdown-and-latex.peek-nvim" }, -- markdown 预览
   { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" }, -- 文件浏览
 
   -- import/override with your plugins folder
