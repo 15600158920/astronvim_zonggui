@@ -18,14 +18,15 @@ end
 require "lazy_setup"
 require "polish"
 vim.opt.relativenumber = false -- 取消相对行号
-
--- vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Telescope buffers" })
+-- 覆盖 telescope buffer 的快捷键
 vim.keymap.set(
   "n",
   "<leader><space>",
   function() require("telescope.builtin").buffers() end,
   { noremap = true, silent = true }
 )
+
+-- 通过 osc52 协议打通 粘贴板
 vim.opt.clipboard = "unnamedplus"
 function my_paste(reg)
   return function(lines)
