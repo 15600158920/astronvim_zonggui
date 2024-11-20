@@ -42,4 +42,9 @@ return {
       end)
     end,
   },
+  {
+    -- 快速注释 识别不同语言
+    "echasnovski/mini.comment",
+    config = true,
+  },
 }

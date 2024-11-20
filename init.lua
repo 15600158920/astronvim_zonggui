@@ -3,20 +3,25 @@
 local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+    lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore
-  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.api.nvim_echo(
+    { { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
+    true, {})
   vim.fn.getchar()
   vim.cmd.quit()
 end
 
 require "lazy_setup"
 require "polish"
+
+-- 新增
 vim.opt.relativenumber = false -- 取消相对行号
 -- 覆盖 telescope buffer 的快捷键
 vim.keymap.set(
@@ -54,3 +59,18 @@ else
     },
   }
 end
+
+-- neovide
+--
+-- 设置缩放比例
+vim.g.neovide_scale_factor = 0.6 -- 默认值为1.0，您可以根据需要调整
+
+-- 设置全局字体
+vim.o.guifont = "Source Code Pro:h14" -- 替换为您喜欢的字体和大小
+
+-- 行间距和文本效果设置
+vim.opt.linespace = 2
+vim.g.neovide_text_gamma = 0.0
+vim.g.neovide_text_contrast = 0.5
+-- 透明度
+vim.g.neovide_transparency = 0.9
